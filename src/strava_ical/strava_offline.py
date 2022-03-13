@@ -1,3 +1,4 @@
+from datetime import datetime
 from datetime import timedelta
 import json
 from os import PathLike
@@ -5,6 +6,8 @@ import sqlite3
 from typing import Any
 from typing import Dict
 from typing import Iterable
+from typing import Optional
+from typing import Tuple
 from typing import Union
 
 from dateutil.parser import isoparse
@@ -46,7 +49,7 @@ class Activity:
         return timedelta(seconds=self['elapsed_time'])
 
     @property
-    def start_latlng(self):
+    def start_latlng(self) -> Optional[Tuple[float, float]]:
         try:
             [lat, lng] = self['start_latlng']
             return lat, lng
@@ -54,12 +57,61 @@ class Activity:
             return None
 
     @property
-    def start_datetime(self):
+    def start_datetime(self) -> datetime:
         return isoparse(self['start_date'])
 
     @property
-    def end_datetime(self):
+    def end_datetime(self) -> datetime:
         return self.start_datetime + self.elapsed_time
+
+    @property
+    def type(self) -> str:
+        return self['type']
+
+    # see https://developers.strava.com/docs/reference/#api-models-ActivityType
+    _type_emojis = {
+        'AlpineSki': '⛷',
+        'BackcountrySki': '🎿',
+        'Canoeing': '🛶',
+        'Crossfit': '🤸',
+        'EBikeRide': '🛵',
+        'Elliptical': '🏃',
+        'Golf': '🏌',
+        'Handcycle': '🚴',
+        'Hike': '🥾',
+        'IceSkate': '⛸',
+        'InlineSkate': '🛼',
+        'Kayaking': '🛶',
+        'Kitesurf': '🏄',
+        'NordicSki': '🎿',
+        'Ride': '🚴',
+        'RockClimbing': '🧗',
+        'RollerSki': '🎿',
+        'Rowing': '🚣',
+        'Run': '🏃',
+        'Sail': '⛵',
+        'Skateboard': '🛹',
+        'Snowboard': '🏂',
+        'Snowshoe': '🎿',
+        'Soccer': '⚽',
+        'StairStepper': '🪜',
+        'StandUpPaddling': '🛶',
+        'Surfing': '🏄',
+        'Swim': '🏊',
+        'Velomobile': '🏎',
+        'VirtualRide': '🚴',
+        'VirtualRun': '🏃',
+        'Walk': '🚶',
+        'WeightTraining': '🏋',
+        'Wheelchair': '🧑‍🦽',
+        'Windsurf': '🏄',
+        'Workout': '💪',
+        'Yoga': '🧘',
+    }
+
+    @property
+    def type_emoji(self) -> str:
+        return self._type_emojis.get(self.type, "⏱")
 
 
 def read_strava_offline(db_filename: Union[str, PathLike]) -> Iterable[Activity]:

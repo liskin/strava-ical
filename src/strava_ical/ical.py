@@ -24,7 +24,7 @@ def ical(activities: Iterable[Activity]) -> bytes:
         ev.add('url', f"https://www.strava.com/activities/{activity.id}")
         ev.add('dtstart', activity.start_datetime)
         ev.add('dtend', activity.end_datetime)
-        ev.add('summary', activity.name)  # TODO: type emoji, custom format
+        ev.add('summary', f"{activity.type_emoji} {activity.name}")  # TODO: custom format
         ev.add('description', "\n".join(description))
         if activity.start_latlng:
             ev.add('geo', activity.start_latlng)
