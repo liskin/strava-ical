@@ -1,9 +1,11 @@
 from datetime import timedelta
 import json
+from os import PathLike
 import sqlite3
 from typing import Any
 from typing import Dict
 from typing import Iterable
+from typing import Union
 
 from dateutil.parser import isoparse
 
@@ -60,7 +62,7 @@ class Activity:
         return self.start_datetime + self.elapsed_time
 
 
-def read_strava_offline(db_filename: str) -> Iterable[Activity]:
+def read_strava_offline(db_filename: Union[str, PathLike]) -> Iterable[Activity]:
     """
     Read activities from strava-offline database.
     """

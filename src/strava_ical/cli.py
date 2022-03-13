@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import BinaryIO
 
 import click
 import platformdirs
@@ -16,7 +17,7 @@ from .strava_offline import read_strava_offline
 @click.option(
     '-o', '--output', type=click.File('wb'), default='-', show_default=True,
     help="Output file")
-def main(strava_database, output):
+def main(strava_database: Path, output: BinaryIO):
     activities = read_strava_offline(strava_database)
     output.write(ical(activities))
 
