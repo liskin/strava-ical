@@ -110,6 +110,7 @@ jobs:
               -e python3-dateutil \
               -e python3-flake8 \
               -e python3-icalendar \
+              -e python3-importlib-metadata \
               -e python3-isort \
               -e python3-mypy \
               -e python3-oauthlib \
