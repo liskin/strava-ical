@@ -66,7 +66,7 @@ omit the `[strava]` bit to avoid installing strava-offline twice.
 
 ## Command line options
 
-<!-- include .readme.md/help.md -->
+<!-- include tests/readme/help.md -->
 <!--
     $ export COLUMNS=120
 -->

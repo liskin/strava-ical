@@ -55,6 +55,34 @@ strava = [
 strava-ical = "strava_ical.cli:cli"
 strava-ical-sync = "strava_ical.cli_strava_offline:cli_sqlite [strava]"
 
+[tool.gha-check-distro]
+dependencies-apt = [
+    "python3-bottle",
+    "python3-build",
+    "python3-click",
+    "python3-click-option-group",
+    "python3-configobj",
+    "python3-cram",
+    "python3-dateutil",
+    "python3-flake8",
+    "python3-icalendar",
+    "python3-importlib-metadata",
+    "python3-isort",
+    "python3-mypy",
+    "python3-oauthlib",
+    "python3-pip",
+    "python3-pip-whl",
+    "python3-platformdirs",
+    "python3-pytest",
+    "python3-requests-oauthlib",
+    "python3-tabulate",
+    "python3-typeshed",
+    "python3-typing-extensions",
+    "python3-venv",
+    "python3-yaml",
+    "twine",
+]
+
 [tool.setuptools_scm]
 
 [tool.setuptools.packages.find]
@@ -67,5 +95,8 @@ show_error_codes = true
 
 [tool.isort]
 profile = "open_stack"
+
+[tool.ruff]
+line-length = 120
 
 # vim:set et:
