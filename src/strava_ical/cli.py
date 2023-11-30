@@ -17,10 +17,6 @@ from .strava_offline import read_strava_offline
 @click.option(
     '-o', '--output', type=click.File('wb'), default='-', show_default=True,
     help="Output file")
-def main(strava_database: Path, output: BinaryIO):
+def cli(strava_database: Path, output: BinaryIO):
     activities = read_strava_offline(strava_database)
     output.write(ical(activities))
-
-
-if __name__ == "__main__":
-    main()

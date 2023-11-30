@@ -1,10 +1,12 @@
 # strava-ical
 
-**Generate iCalendar with your [Strava][] activities**
-
 [![PyPI Python Version badge](https://img.shields.io/pypi/pyversions/strava-ical)](https://pypi.org/project/strava-ical/)
 [![PyPI Version badge](https://img.shields.io/pypi/v/strava-ical)](https://pypi.org/project/strava-ical/)
 ![License badge](https://img.shields.io/github/license/liskin/strava-ical)
+
+## Overview
+
+**Generate iCalendar with your [Strava][] activities**
 
 Uses [strava-offline][] to keep and incrementally sync with a local database of activities.
 
@@ -12,7 +14,6 @@ Uses [strava-offline][] to keep and incrementally sync with a local database of 
 
 [strava-offline]: https://github.com/liskin/strava-offline#readme
 [Strava]: https://strava.com/
-[pipx]: https://github.com/pypa/pipx
 
 ## Installation
 
@@ -21,6 +22,13 @@ Using [pipx][]:
 ```
 pipx ensurepath
 pipx install "strava-ical[strava]"
+```
+
+To keep a local git clone around:
+
+```
+git clone https://github.com/liskin/strava-ical
+make -C strava-ical pipx
 ```
 
 Alternatively, if you don't need the isolated virtualenv that [pipx][]
@@ -32,6 +40,8 @@ pip install "strava-ical[strava]"
 
 If you've already installed [strava-offline][] and use it separately, you can
 omit the `[strava]` bit to avoid installing strava-offline twice.
+
+[pipx]: https://github.com/pypa/pipx
 
 ## Setup and usage
 
@@ -56,7 +66,7 @@ omit the `[strava]` bit to avoid installing strava-offline twice.
 
 ## Command line options
 
-<!-- include .readme.md/cmdline.md -->
+<!-- include .readme.md/help.md -->
 <!--
     $ export COLUMNS=120
 -->
