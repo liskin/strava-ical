@@ -8,7 +8,7 @@
 
 Uses [strava-offline][] to keep and incrementally sync with a local database of activities.
 
-![Example screenshot](TODO)
+![Example screenshot of the output in Google Calendar](https://github.com/liskin/strava-ical/assets/300342/71d2e9c5-f9ef-481c-b5ee-4a71fd09caa4)
 
 [strava-offline]: https://github.com/liskin/strava-offline#readme
 [Strava]: https://strava.com/
