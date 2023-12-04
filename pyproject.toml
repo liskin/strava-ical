@@ -56,7 +56,7 @@ strava = [
 "Issues" = "https://github.com/liskin/strava-ical/issues"
 "CI" = "https://github.com/liskin/strava-ical/actions"
 "Donations (GitHub)" = "https://github.com/sponsors/liskin"
-"Donations (PayPal)" = "https://www.paypal.me/lisknisi/10EUR"
+"Donations (PayPal)" = "https://www.paypal.me/lisknisi/5EUR"
 
 [project.scripts]
 strava-ical = "strava_ical.cli:cli"
