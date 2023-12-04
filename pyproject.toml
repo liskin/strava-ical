@@ -24,7 +24,6 @@ classifiers = [ # https://pypi.org/classifiers/
     "Programming Language :: Python :: 3.12",
     "Topic :: Utilities",
 ]
-urls = {Homepage = "https://github.com/liskin/strava-ical"}
 requires-python = "~= 3.8"
 dependencies = [
     "click ~= 8.0",
@@ -50,6 +49,14 @@ test = [
 strava = [
     "strava-offline ~= 1.0",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/liskin/strava-ical"
+"Release Notes" = "https://github.com/liskin/strava-ical/releases"
+"Issues" = "https://github.com/liskin/strava-ical/issues"
+"CI" = "https://github.com/liskin/strava-ical/actions"
+"Donations (GitHub)" = "https://github.com/sponsors/liskin"
+"Donations (PayPal)" = "https://www.paypal.me/lisknisi/10EUR"
 
 [project.scripts]
 strava-ical = "strava_ical.cli:cli"
