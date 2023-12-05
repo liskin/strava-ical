@@ -18,6 +18,7 @@ def ical(activities: Iterable[Activity]) -> bytes:
             description.append(f"Elev Gain: {activity.total_elevation_gain:.0f} m")
         if activity.moving_time:
             description.append(f"Moving Time: {activity.moving_time}")
+        description.append(f"Strava: https://www.strava.com/activities/{activity.id}")
 
         ev = icalendar.Event()
         ev.add('uid', f"{activity.id}@strava.com")
