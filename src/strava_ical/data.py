@@ -58,7 +58,7 @@ class Activity:
         try:
             [lat, lng] = self['start_latlng']
             return lat, lng
-        except ValueError:
+        except (KeyError, ValueError):
             return None
 
     @property
