@@ -17,6 +17,9 @@ essential_columns = {
     'start_date',
     'type',
 }
+optional_columns = {
+    'start_latlng',
+}
 
 
 class Activity:
