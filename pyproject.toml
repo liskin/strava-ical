@@ -38,7 +38,7 @@ dev = [
     "build >= 0.7",
     "flake8 >= 3.7",
     "isort >= 5.0",
-    "mypy >= 0.900",
+    "mypy >= 1.0",
     "prysk == 0.16.0",
     "twine",
     "types-python-dateutil",
