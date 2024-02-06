@@ -2,7 +2,7 @@ from typing import Iterable
 
 import icalendar  # type: ignore [import]
 
-from .strava_offline import Activity
+from .data import Activity
 
 
 def ical(activities: Iterable[Activity]) -> bytes:
