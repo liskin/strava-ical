@@ -3,31 +3,32 @@ import textwrap
 from strava_ical.data import Activity
 from strava_ical.ical import ical
 
+activities = [
+    Activity({
+        'id': 1,
+        'name': 'Morning Ride',
+        'distance': 1500,
+        'total_elevation_gain': 200,
+        'moving_time': 600,
+        'elapsed_time': 660,
+        'start_date': '2024-02-06T10:00:00Z',
+        'type': 'Ride',
+    }),
+    Activity({
+        'id': 2,
+        'name': 'Morning Skate',
+        'distance': 1500,
+        'total_elevation_gain': 200,
+        'moving_time': 600,
+        'elapsed_time': 660,
+        'start_date': '2024-02-05T10:00:00Z',
+        'type': 'InlineSkate',
+        'start_latlng': [51.0, 0.0],
+    }),
+]
+
 
 def test_ical():
-    activities = [
-        Activity({
-            'id': 1,
-            'name': 'Morning Ride',
-            'distance': 1500,
-            'total_elevation_gain': 200,
-            'moving_time': 600,
-            'elapsed_time': 660,
-            'start_date': '2024-02-06T10:00:00Z',
-            'type': 'Ride',
-        }),
-        Activity({
-            'id': 2,
-            'name': 'Morning Skate',
-            'distance': 1500,
-            'total_elevation_gain': 200,
-            'moving_time': 600,
-            'elapsed_time': 660,
-            'start_date': '2024-02-05T10:00:00Z',
-            'type': 'InlineSkate',
-            'start_latlng': [51.0, 0.0],
-        }),
-    ]
     expected = textwrap.dedent("""\
         BEGIN:VCALENDAR
         VERSION:2.0
@@ -54,3 +55,11 @@ def test_ical():
         END:VCALENDAR
     """).replace('\n', '\r\n')
     assert ical(activities) == expected.encode('utf-8')
+
+
+def test_ical_max_size():
+    empty_size = len(ical([]))
+    full_size = len(ical(activities))
+    assert empty_size < full_size
+    assert len(ical(activities, max_size=full_size)) == full_size
+    assert empty_size < len(ical(activities, max_size=full_size - 1)) < full_size

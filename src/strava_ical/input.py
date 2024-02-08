@@ -18,7 +18,8 @@ def read_input_csv(inp: TextIO) -> Iterable[Activity]:
             ".mode csv" \
             ".headers on" \
             "SELECT distance, elapsed_time, id, moving_time, name, start_date, \
-                json_extract(json, '$.start_latlng') AS 'start_latlng', total_elevation_gain, type FROM activity" \
+                json_extract(json, '$.start_latlng') AS 'start_latlng', total_elevation_gain, type FROM activity \
+                ORDER BY start_date DESC" \
             >activities.csv
     """
     for r in csv.DictReader(inp):
@@ -40,7 +41,7 @@ def read_strava_offline(db_filename: Union[str, PathLike]) -> Iterable[Activity]
     with sqlite3.connect(db_filename) as db:
         db.row_factory = sqlite3.Row
 
-        for r in db.execute('SELECT * FROM activity'):
+        for r in db.execute('SELECT * FROM activity ORDER BY start_date DESC'):
             r_json = json.loads(r['json'])
             r = {**r_json, **r}
             assert essential_columns <= set(r.keys())

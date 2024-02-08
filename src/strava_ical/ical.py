@@ -1,14 +1,17 @@
 from typing import Iterable
+from typing import Optional
 
 import icalendar  # type: ignore [import]
 
 from .data import Activity
 
 
-def ical(activities: Iterable[Activity]) -> bytes:
+def ical(activities: Iterable[Activity], max_size: Optional[int] = None) -> bytes:
     cal = icalendar.Calendar()
     cal.add('prodid', "strava-ical")
     cal.add('version', "2.0")
+
+    cal_size = len(cal.to_ical())
 
     for activity in activities:
         description = []
@@ -29,6 +32,12 @@ def ical(activities: Iterable[Activity]) -> bytes:
         ev.add('description', "\n".join(description))
         if activity.start_latlng:
             ev.add('geo', activity.start_latlng)
+
+        ev_size = len(ev.to_ical())
+        if max_size is not None and cal_size + ev_size > max_size:
+            break
+
         cal.add_component(ev)
+        cal_size += ev_size
 
     return cal.to_ical()
