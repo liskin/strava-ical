@@ -62,7 +62,14 @@ omit the `[strava]` bit to avoid installing strava-offline twice.
 
 * Run `strava-ical`:
 
-  TODO
+  ```
+  $ strava-ical --max-size 1M -o strava-activities.ical
+  ```
+
+* Import `strava-activities.ical` into your calendar app of choice.
+
+  (Note that Google Calendar refreshes iCal URLs once a day and cannot be
+  tweaked in any way. Manual refresh isn't possible either.)
 
 ## Command line options
 
@@ -98,3 +105,4 @@ might like these:
 * [strava-offline](https://github.com/liskin/strava-offline) – Keep a local mirror of Strava activities for further analysis/processing
 * [strava-gear](https://github.com/liskin/strava-gear) – Rule based tracker of gear and component wear primarily for Strava
 * [strava-map-switcher](https://github.com/liskin/strava-map-switcher) – Map switcher for Strava website
+* [foursquare-swarm-ical](https://github.com/liskin/foursquare-swarm-ical) – Sync Foursquare Swarm check-ins to local sqlite DB and generate iCalendar
