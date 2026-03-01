@@ -17,30 +17,30 @@ Uses [strava-offline][] to keep and incrementally sync with a local database of 
 
 ## Installation
 
+Using [uv][]:
+
+```console
+$ uv tool install "strava-ical[strava]"
+```
+
 Using [pipx][]:
 
-```
-pipx ensurepath
-pipx install "strava-ical[strava]"
-```
-
-To keep a local git clone around:
-
-```
-git clone https://github.com/liskin/strava-ical
-make -C strava-ical pipx
+```console
+$ pipx ensurepath
+$ pipx install "strava-ical[strava]"
 ```
 
-Alternatively, if you don't need the isolated virtualenv that [pipx][]
-provides, feel free to just:
+From a git clone:
 
-```
-pip install "strava-ical[strava]"
+```console
+$ git clone https://github.com/liskin/strava-ical
+$ uv tool install "./strava-ical[strava]"
 ```
 
 If you've already installed [strava-offline][] and use it separately, you can
 omit the `[strava]` bit to avoid installing strava-offline twice.
 
+[uv]: https://docs.astral.sh/uv/
 [pipx]: https://github.com/pypa/pipx
 
 ## Setup and usage
