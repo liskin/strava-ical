@@ -12,27 +12,27 @@ strava-ical is a …
 
 ## Installation
 
+Using [uv][]:
+
+```console
+$ uv tool install strava-ical
+```
+
 Using [pipx][]:
 
-```
-pipx ensurepath
-pipx install strava-ical
-```
-
-To keep a local git clone around:
-
-```
-git clone https://github.com/liskin/strava-ical
-make -C strava-ical pipx
+```console
+$ pipx ensurepath
+$ pipx install strava-ical
 ```
 
-Alternatively, if you don't need the isolated virtualenv that [pipx][]
-provides, feel free to just:
+From a git clone:
 
-```
-pip install strava-ical
+```console
+$ git clone https://github.com/liskin/strava-ical
+$ uv tool install ./strava-ical
 ```
 
+[uv]: https://docs.astral.sh/uv/
 [pipx]: https://github.com/pypa/pipx
 
 ## Usage
