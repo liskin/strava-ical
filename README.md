@@ -75,6 +75,7 @@ omit the `[strava]` bit to avoid installing strava-offline twice.
 
 <!-- include tests/readme/help.md -->
 <!--
+    $ . "$TESTDIR"/../.xdg-user.sh
     $ export COLUMNS=120
 -->
 
@@ -100,7 +101,7 @@ omit the `[strava]` bit to avoid installing strava-offline twice.
 We welcome bug fixes, (reasonable) new features, documentation improvements,
 and more. Submit these as GitHub pull requests. Use GitHub issues to report
 bugs and discuss non-trivial code improvements; alternatively, get in touch
-via [IRC/Matrix/Fediverse](https://work.lisk.in/contact/).
+via [IRC/Fediverse/email](https://work.lisk.in/contact/).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more details about the code base
 (including running tests locally).
