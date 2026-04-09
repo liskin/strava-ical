@@ -1,3 +1,7 @@
+<!--
+    $ . "$TESTDIR"/../.xdg-user.sh
+-->
+
     $ strava-ical --help
     Usage: strava-ical [OPTIONS]
     
