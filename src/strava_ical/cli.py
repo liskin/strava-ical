@@ -55,5 +55,11 @@ def cli(csv: Optional[TextIO], strava_database: Path, output: BinaryIO, max_size
     if csv:
         activities = read_input_csv(csv)
     else:
-        activities = read_strava_offline(strava_database)
+        if strava_database.exists():
+            activities = read_strava_offline(strava_database)
+        else:
+            raise click.ClickException(
+                f"Strava database not found: {strava_database} "
+                "(run strava-ical-sync first, or use --csv or --strava-database with an existing file)"
+            )
     output.write(ical(activities, max_size=max_size))
