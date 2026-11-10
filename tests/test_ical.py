@@ -1,5 +1,8 @@
 import textwrap
 
+from click.testing import CliRunner
+
+from strava_ical.cli import cli
 from strava_ical.data import Activity
 from strava_ical.ical import ical
 
@@ -63,3 +66,13 @@ def test_ical_max_size():
     assert empty_size < full_size
     assert len(ical(activities, max_size=full_size)) == full_size
     assert empty_size < len(ical(activities, max_size=full_size - 1)) < full_size
+
+
+def test_cli_missing_database_is_clean_error(tmp_path):
+    missing = tmp_path / "no-such.sqlite"
+    result = CliRunner().invoke(cli, ["--strava-database", str(missing)])
+    assert result.exit_code == 1
+    assert "not found" in result.output
+    assert isinstance(result.exception, SystemExit)
+    # sqlite3 must not leave a stray empty file behind
+    assert not missing.exists()
